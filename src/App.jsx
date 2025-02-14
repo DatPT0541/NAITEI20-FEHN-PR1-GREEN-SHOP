@@ -7,12 +7,14 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import { Outlet } from 'react-router-dom';
 import Comment from './components/Comment';
+import Login from './pages/Login';
+
 function App() {
 
   return (
     <div className="">
       {/* app */}
-      <Comment />
+      <Login />
     </div>
 
   )

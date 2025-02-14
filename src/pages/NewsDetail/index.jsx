@@ -8,7 +8,6 @@ import {
 } from "@ant-design/icons";
 
 import { ClockCircleOutlined, CommentOutlined } from "@ant-design/icons";
-import CommentList from "../../components/CommentList";
 import CommentForm from "../../components/CommentForm";
 
 const BlogPostDetail = ({
@@ -172,11 +171,10 @@ const NewsDetail = () => {
               {tags.map((tag) => (
                 <button
                   key={tag}
-                  className={`px-4 py-2 border-[1px] border-gray-200 rounded-100 text-sm ${
-                    selectedTag === tag
+                  className={`px-4 py-2 border-[1px] border-gray-200 rounded-100 text-sm ${selectedTag === tag
                       ? "bg-green-400 text-white "
                       : "bg-white text-gray-700 hover:bg-gray-100 "
-                  }`}
+                    }`}
                   onClick={() => setSelectedTag(tag)}
                 >
                   {tag}

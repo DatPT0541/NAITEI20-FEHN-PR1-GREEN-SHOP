@@ -10,6 +10,8 @@ import Cart from "./pages/Cart/index.jsx";
 import ProductDetail from "./pages/ProductDetail/index.jsx";
 import News from "./pages/News/index.jsx";
 import NewsDetail from "./pages/NewsDetail/index.jsx";
+import Login from "./pages/Login/index.jsx";
+import Signup from "./pages/Signup/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -23,8 +25,10 @@ createRoot(document.getElementById("root")).render(
           <Route path="/news/detail" element={<NewsDetail />} />
           <Route path="app" element={<App />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode >
 );
