@@ -37,7 +37,7 @@ const Home = () => {
         <div className="container mx-auto p-0 pt-10 pb-10">
           <News />
         </div>
-      </div>
+      </div >
     </div >
   )
 }

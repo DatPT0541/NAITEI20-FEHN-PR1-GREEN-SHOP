@@ -116,11 +116,11 @@ const Cart = () => {
                   THANH TOÁN
                 </button>
               </div>
-            </div>
-          </div>
+            </div >
+          </div >
         )}
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
