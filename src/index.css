@@ -56,8 +56,39 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
+.custom-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #3FB871 !important;
+}
 
-@media (prefers-color-scheme: light) {
+.custom-tabs .ant-tabs-ink-bar {
+  background-color: #3FB871 !important;
+}
+
+.custom-tabs .ant-tabs-tab:hover {
+  color: #3FB871 !important;
+  border-color: #3FB871 !important;
+}
+
+.custom-menu .ant-menu-item {
+  color: white; /* Màu chữ trắng */
+  font-weight: normal;
+}
+
+.custom-menu .ant-menu-item:hover {
+  color: #e6e6e6; /* Màu chữ khi hover */
+}
+
+.custom-menu .ant-menu-item-selected {
+  background-color: transparent !important; /* Không đổi màu nền khi chọn */
+  font-weight: bold; /* In đậm chữ khi được chọn */
+  color: white !important;
+}
+
+.custom-menu .ant-menu-item {
+  border-bottom: none !important;
+}
+
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
@@ -14,7 +17,14 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!fullName || !phone || !email || !website || !password || !confirmPassword) {
+    if (
+      !fullName ||
+      !phone ||
+      !email ||
+      !website ||
+      !password ||
+      !confirmPassword
+    ) {
       alert("Vui lòng nhập đầy đủ thông tin!");
       return;
     }
@@ -23,14 +33,41 @@ const Signup = () => {
       return;
     }
 
-    alert(`Đăng ký thành công!\nHọ & Tên: ${fullName}\nSố ĐT: ${phone}\nEmail: ${email}\nWebsite: ${website}\nĐăng ký nhận thông tin: ${subscribe ? "Có" : "Không"}`);
+    alert(
+      `Đăng ký thành công!\nHọ & Tên: ${fullName}\nSố ĐT: ${phone}\nEmail: ${email}\nWebsite: ${website}\nĐăng ký nhận thông tin: ${
+        subscribe ? "Có" : "Không"
+      }`
+    );
   };
 
   return (
-    <div className="flex flex-col items-center justify-start p-2 mt-20 mb-20">
+    <div className="flex flex-col items-center justify-start p-2 pt-10 mb-20">
       <div className="w-300">
+        <Breadcrumbs aria-label="breadcrumb" className="pb-10">
+          <Link
+            to="/"
+            style={{
+              textDecoration: "none",
+              color: "#666",
+              fontWeight: 500,
+            }}
+          >
+            Trang chủ
+          </Link>
+          <Typography
+            color="primary"
+            style={{
+              fontWeight: 500,
+              color: "#36B37E",
+            }}
+          >
+            Đăng kí
+          </Typography>
+        </Breadcrumbs>
         <div className="mb-6">
-          <h1 className="text-left text-green-600 font-semibold uppercase text-xl">Thông tin cá nhân</h1>
+          <h1 className="text-left text-green-600 font-semibold uppercase text-xl">
+            Thông tin cá nhân
+          </h1>
         </div>
 
         <form onSubmit={handleSubmit} className="text-left space-y-8">
@@ -90,11 +127,15 @@ const Signup = () => {
               onChange={(e) => setSubscribe(e.target.checked)}
               className="appearance-none w-4 h-4 border-2 border-gray-400 bg-white checked:bg-gray-500 checked:border-gray-500 focus:ring-2 focus:ring-gray-300 mr-2"
             />
-            <label className="text-gray-700">Đăng ký nhận thông tin qua email</label>
+            <label className="text-gray-700">
+              Đăng ký nhận thông tin qua email
+            </label>
           </div>
 
           <div className="mb-6">
-            <h1 className="text-left text-green-600 font-semibold uppercase text-xl">Thông tin tài khoản</h1>
+            <h1 className="text-left text-green-600 font-semibold uppercase text-xl">
+              Thông tin tài khoản
+            </h1>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
