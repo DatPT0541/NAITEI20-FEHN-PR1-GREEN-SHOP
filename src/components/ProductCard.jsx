@@ -1,14 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Star, Search } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+
+  const navigate = useNavigate();
+
   const handleBuyNow = (e) => {
     e.stopPropagation();
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProductIndex = cart.findIndex(
-      (item) => item.id === product.id
-    );
+    const existingProductIndex = cart.findIndex((item) => item.id === product.id);
     if (existingProductIndex !== -1) {
       cart[existingProductIndex].quantity += 1;
     } else {
@@ -17,12 +18,15 @@ const ProductCard = ({ product }) => {
     localStorage.setItem("cart", JSON.stringify(cart));
     console.log("Sản phẩm đã thêm vào giỏ hàng:", product.name);
   };
+  const handleCardClick = () => {
+    window.scrollTo(0, 0);
+    navigate(`/product/${product.id}`);
+  };
 
   return (
-    <Link
-      to={`/product/${product.id}`}
+    <div
       className="h-full border border-gray-200 p-0 bg-white transition cursor-pointer relative overflow-hidden"
-      onClick={() => console.log("Đã bấm vào:", product.name)}
+      onClick={handleCardClick}
     >
       {product.isNew || product.discount > 0 ? (
         <div className="absolute top-2 left-2 w-12 h-12 flex justify-center items-center rounded-full text-white font-semibold text-sm z-10">
@@ -42,7 +46,7 @@ const ProductCard = ({ product }) => {
         <img
           src={product.images[0]}
           alt={product.name}
-          className="w-full aspect-[4.5/3] object-cover border-b border-gray-200 rounded-t-none transition duration-300 group-hover:blur-sm"
+          className="w-full aspect-[4.8/3] object-cover border-b border-gray-200 rounded-t-none transition duration-300 group-hover:blur-sm"
         />
 
         <div className="absolute inset-0 bg-opacity-40 hidden group-hover:flex items-center justify-center gap-3 z-10">
@@ -65,7 +69,7 @@ const ProductCard = ({ product }) => {
         </div>
       </div>
 
-      <h2 className="text-lg font-semibold mt-6 text-center">{product.name}</h2>
+      <h2 className="text-lg font-semibold mt-4 text-center">{product.name}</h2>
 
       <div className="flex justify-center items-center mt-1 text-yellow-400">
         {[...Array(5)].map((_, i) => {
@@ -80,8 +84,8 @@ const ProductCard = ({ product }) => {
                 rating >= currentStar
                   ? "currentColor"
                   : rating >= currentStar - 0.5
-                  ? "url(#halfStar)"
-                  : "none"
+                    ? "url(#halfStar)"
+                    : "none"
               }
               stroke="currentColor"
             />
@@ -99,14 +103,10 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="flex items-center justify-center gap-2 mt-2">
-        <span className="text-red-500 font-bold text-xl">
-          {product.price.toLocaleString("vi-VN")}₫
-        </span>
-        <span className="text-gray-400 line-through text-sm">
-          {product.oldPrice.toLocaleString("vi-VN")}₫
-        </span>
+        <span className="text-red-500 font-bold text-xl">{product.price.toLocaleString("vi-VN")}₫</span>
+        <span className="text-gray-400 line-through text-sm">{product.oldPrice.toLocaleString("vi-VN")}₫</span>
       </div>
-    </Link>
+    </div>
   );
 };
 
