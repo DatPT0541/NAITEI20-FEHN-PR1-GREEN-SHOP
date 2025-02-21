@@ -30,7 +30,7 @@ const Cart = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-6">
-      <div className="w-300">
+      <div className="w-100 md:w-300">
 
 
         <div className="flex items-center justify-between mb-4 relative">
@@ -42,26 +42,30 @@ const Cart = () => {
         {cart.length === 0 ? (
           <p className="text-gray-500">Giỏ hàng trống.</p>
         ) : (
-          <div className="w-full">
+          <div className="w-full overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-green-600 text-white">
-                  <th className="p-3 border border-gray-300 w-45 uppercase">Hình ảnh</th>
-                  <th className="p-3 border border-gray-300 uppercase">Tên sản phẩm</th>
-                  <th className="p-3 border border-gray-300 uppercase">Đơn giá</th>
-                  <th className="p-3 border border-gray-300 uppercase">Số lượng</th>
-                  <th className="p-3 border border-gray-300 uppercase">Thành tiền</th>
-                  <th className="p-3 border border-gray-300 uppercase">Xóa</th>
+                  <th className="p-2 border border-gray-300 w-20 md:w-32 uppercase">Hình ảnh</th>
+                  <th className="p-2 border border-gray-300 uppercase">Tên sản phẩm</th>
+                  <th className="p-2 border border-gray-300 hidden md:table-cell uppercase">Đơn giá</th>
+                  <th className="p-2 border border-gray-300 uppercase">Số lượng</th>
+                  <th className="p-2 border border-gray-300 hidden md:table-cell uppercase">Thành tiền</th>
+                  <th className="p-2 border border-gray-300 uppercase">Xóa</th>
                 </tr>
               </thead>
               <tbody>
                 {cart.map((item) => (
                   <tr key={item.id} className="text-center">
-                    <td className="border-b border-s border-gray-300 p-2 flex justify-center items-center ">
-                      <img src={item.images[0]} alt={item.name} className="w-32 h-36 object-cover" />
+                    <td className="border-l border-b border-gray-300 p-2 flex justify-center items-center">
+                      <img src={item.images[0]} alt={item.name} className="w-20 h-24 object-cover md:w-32 md:h-36" />
                     </td>
-                    <td className="border border-gray-300 p-2 text-green-600 font-medium uppercase">{item.name}</td>
-                    <td className="border border-gray-300 p-2">{item.price.toLocaleString("vi-VN")} đ</td>
+                    <td className="border border-gray-300 p-2 text-green-600 font-medium uppercase">
+                      {item.name}
+                    </td>
+                    <td className="border border-gray-300 p-2 hidden md:table-cell">
+                      {item.price.toLocaleString("vi-VN")} đ
+                    </td>
                     <td className="border border-gray-300 p-2">
                       <input
                         type="number"
@@ -71,7 +75,9 @@ const Cart = () => {
                         min="1"
                       />
                     </td>
-                    <td className="border border-gray-300 p-2">{(item.price * item.quantity).toLocaleString("vi-VN")} đ</td>
+                    <td className="border border-gray-300 p-2 hidden md:table-cell">
+                      {(item.price * item.quantity).toLocaleString("vi-VN")} đ
+                    </td>
                     <td className="border border-gray-300 p-2">
                       <button onClick={() => removeItem(item.id)} className="text-gray-700 hover:text-red-500">
                         <Trash size={20} />
@@ -92,20 +98,32 @@ const Cart = () => {
               </button>
             </div>
 
-            <div className="mt-6 flex flex-col items-end">
-              <table className="w-185 border-collapse border border-gray-300 mt-6">
+            <div className="mt-6 flex flex-col items-end overflow-x-auto">
+              <table className="w-full md:w-1/2 border-collapse border border-gray-300 mt-6">
                 <tbody>
-                  <tr className="">
-                    <td className="p-10 border-e border-b border-gray-300 text-green-600 font-bold text-left uppercase">Tổng tiền (Chưa thuế)</td>
-                    <td className="p-10 border-b border-gray-300 text-green-600 font-bold text-left uppercase">{totalBeforeTax.toLocaleString("vi-VN")} đ</td>
+                  <tr>
+                    <td className="p-4 md:p-6 border-e border-b border-gray-300 text-green-600 font-bold text-left uppercase">
+                      Tổng tiền (Chưa thuế)
+                    </td>
+                    <td className="p-4 md:p-6 border-b border-gray-300 text-green-600 font-bold text-right uppercase">
+                      {totalBeforeTax.toLocaleString("vi-VN")} đ
+                    </td>
                   </tr>
-                  <tr className="">
-                    <td className="p-10 border-e border-b border-gray-300 text-green-600 font-bold text-left uppercase">Thuế (VAT 10%)</td>
-                    <td className="p-10 border-b border-gray-300 text-green-600 font-bold text-left uppercase">{tax.toLocaleString("vi-VN")} đ</td>
+                  <tr>
+                    <td className="p-4 md:p-6 border-e border-b border-gray-300 text-green-600 font-bold text-left uppercase">
+                      Thuế (VAT 10%)
+                    </td>
+                    <td className="p-4 md:p-6 border-b border-gray-300 text-green-600 font-bold text-right uppercase">
+                      {tax.toLocaleString("vi-VN")} đ
+                    </td>
                   </tr>
-                  <tr className=" bg-green-600">
-                    <td className="p-10 border-e border-b border-gray-300 text-white text-xl font-bold text-left uppercase">Tổng thanh toán</td>
-                    <td className="p-10 border-b border-gray-300 text-white text-xl font-bold text-left uppercase">{totalAfterTax.toLocaleString("vi-VN")} đ</td>
+                  <tr className="bg-green-600">
+                    <td className="p-4 md:p-6 border-e border-b border-gray-300 text-white text-lg md:text-xl font-bold text-left uppercase">
+                      Tổng thanh toán
+                    </td>
+                    <td className="p-4 md:p-6 border-b border-gray-300 text-white text-lg md:text-xl font-bold text-right uppercase">
+                      {totalAfterTax.toLocaleString("vi-VN")} đ
+                    </td>
                   </tr>
                 </tbody>
               </table>

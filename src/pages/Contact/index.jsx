@@ -44,7 +44,7 @@ const Contact = () => {
           Liên hệ
         </Typography>
       </Breadcrumbs>
-      <div className="flex flex-col items-center justify-start p-0 mt-20 mb-20">
+      <div className="flex flex-col items-center justify-start p-0 mt-20 mb-20s">
         <div className="w-full h-40">
           <iframe
             title="Google Map"
@@ -55,12 +55,10 @@ const Contact = () => {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-        <div className="w-300 mt-100 mb-20">
-          <div className="text-left grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="w-100 md:w-300 mt-100 mb-20">
+          <div className="text-left grid grid-cols-1 md:grid-cols-2 gap-10">
             <div>
-              <h1 className="text-green-600 font-semibold uppercase text-xl mb-6">
-                THÔNG TIN LIÊN HỆ
-              </h1>
+              <h1 className="text-green-600 font-semibold uppercase text-xl mb-6">THÔNG TIN LIÊN HỆ</h1>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -143,7 +141,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };

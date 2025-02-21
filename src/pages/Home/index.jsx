@@ -17,16 +17,16 @@ const Home = () => {
         />
       </div>
 
-      <div className="w-300">
+      <div className="w-100 md:w-300">
         <div className="container mx-auto p-0 pt-10">
           <OutstandingProducts />
         </div>
 
-        <div className="flex text-left pt-10">
-          <div className="w-1/4">
+        <div className="flex flex-col md:flex-row text-left pt-10">
+          <div className="md:w-1/4">
             <FrequentlyPurchasedProducts />
           </div>
-          <div className="w-3/4">
+          <div className="md:w-3/4">
             <PromotionalProducts />
           </div>
         </div>
@@ -35,11 +35,11 @@ const Home = () => {
           <img src="/images/banner-11140x217.png" alt="Logo" />
         </div>
 
-        <div className="container mx-auto p-0 pt-10">
+        <div className="container mx-auto p-0 pt-10 pb-10 md:pd-0">
           <ProductCarousel />
         </div>
 
-        <div className="container mx-auto p-0 pt-10 pb-10">
+        <div className="hidden md:block md:container md:mx-auto md:p-0 md:pt-10 md:pb-10">
           <News />
         </div>
       </div>
