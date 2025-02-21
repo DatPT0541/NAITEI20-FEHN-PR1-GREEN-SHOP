@@ -12,6 +12,7 @@ import News from "./pages/News/index.jsx";
 import NewsDetail from "./pages/NewsDetail/index.jsx";
 import Login from "./pages/Login/index.jsx";
 import Signup from "./pages/Signup/index.jsx";
+import Contact from "./pages/Contact/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -27,6 +28,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="cart" element={<Cart />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="signup" element={<Signup />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
     </BrowserRouter>
