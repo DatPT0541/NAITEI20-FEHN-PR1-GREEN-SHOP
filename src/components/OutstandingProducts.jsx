@@ -12,8 +12,8 @@ const OutstandingProducts = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-6">
-        <div className="col-span-2 row-span-2 h-120">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-2 gap-y-3 md:gap-6">
+        <div className="col-span-2 row-span-2 h-80 md:h-120">
           <ProductCard product={mockProducts[0]} />
         </div>
         <div>
@@ -22,7 +22,7 @@ const OutstandingProducts = () => {
         <div>
           <ProductCard product={mockProducts[2]} />
         </div>
-        <div className="col-span-2 row-span-2 h-120">
+        <div className="col-span-2 row-span-2 h-80 md:h-120">
           <ProductCard product={mockProducts[3]} />
         </div>
         <div>

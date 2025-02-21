@@ -28,13 +28,13 @@ const Signup = () => {
 
   return (
     <div className="flex flex-col items-center justify-start p-2 mt-20 mb-20">
-      <div className="w-300">
+      <div className="w-100 md:w-300">
         <div className="mb-6">
           <h1 className="text-left text-green-600 font-semibold uppercase text-xl">Thông tin cá nhân</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="text-left space-y-8">
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-gray-700">
                 Họ và tên <span className="text-red-500">*</span>
@@ -97,7 +97,7 @@ const Signup = () => {
             <h1 className="text-left text-green-600 font-semibold uppercase text-xl">Thông tin tài khoản</h1>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-gray-700">
                 Mật khẩu <span className="text-red-500">*</span>

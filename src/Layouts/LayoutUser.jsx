@@ -12,8 +12,8 @@ const LayoutUser = () => {
       <div className="">
         <Outlet />
       </div>
-      
-     <Footer />
+
+      <Footer />
     </div>
   );
 };

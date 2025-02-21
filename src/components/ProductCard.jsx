@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
         <img
           src={product.images[0]}
           alt={product.name}
-          className="w-full aspect-[4.8/3] object-cover border-b border-gray-200 rounded-t-none transition duration-300 group-hover:blur-sm"
+          className="w-full aspect-[5.6/3] md:aspect-[4.8/3] object-cover border-b border-gray-200 rounded-t-none transition duration-300 group-hover:blur-sm"
         />
 
         <div className="absolute inset-0 bg-opacity-40 hidden group-hover:flex items-center justify-center gap-3 z-10">
