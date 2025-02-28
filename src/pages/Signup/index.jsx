@@ -34,15 +34,14 @@ const Signup = () => {
     }
 
     alert(
-      `Đăng ký thành công!\nHọ & Tên: ${fullName}\nSố ĐT: ${phone}\nEmail: ${email}\nWebsite: ${website}\nĐăng ký nhận thông tin: ${
-        subscribe ? "Có" : "Không"
+      `Đăng ký thành công!\nHọ & Tên: ${fullName}\nSố ĐT: ${phone}\nEmail: ${email}\nWebsite: ${website}\nĐăng ký nhận thông tin: ${subscribe ? "Có" : "Không"
       }`
     );
   };
 
   return (
-    <div className="flex flex-col items-center justify-start p-2 pt-10 mb-20">
-      <div className="w-300">
+    <div className="flex flex-col items-center justify-start p-2 mt-20 mb-20">
+      <div className="w-100 md:w-300">
         <Breadcrumbs aria-label="breadcrumb" className="pb-10">
           <Link
             to="/"
@@ -71,7 +70,7 @@ const Signup = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="text-left space-y-8">
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-gray-700">
                 Họ và tên <span className="text-red-500">*</span>
@@ -138,7 +137,7 @@ const Signup = () => {
             </h1>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-gray-700">
                 Mật khẩu <span className="text-red-500">*</span>

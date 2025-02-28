@@ -48,8 +48,8 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-start p-2 mt-20 mb-20">
-      <div className="w-300">
-        <div className="grid grid-cols-2 space-x-20">
+      <div className="w-100 md:w-300">
+        <div className="grid grid-cols-1 md:grid-cols-2 space-x-20 space-y-10">
           <div className="space-y-5">
             <div className="flex items-center justify-between mb-4 relative">
               <div className="relative">

@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { mockProducts } from "../mock/mockProducts";
 import ProductCard from "./ProductCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const ITEMS_PER_SLIDE = 6;
+const ITEMS_PER_SLIDE_MAX = 6;
+const ITEMS_PER_SLIDE_MIN = 1;
 
 const PromotionalProducts = () => {
+  const [itemsPerSlide, setItemsPerSlide] = useState(ITEMS_PER_SLIDE_MAX)
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = Math.max(
-    1,
-    Math.ceil(mockProducts.length / ITEMS_PER_SLIDE)
-  );
+  const totalSlides = Math.max(1, Math.ceil(mockProducts.length / itemsPerSlide));
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
@@ -19,6 +18,19 @@ const PromotionalProducts = () => {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
   };
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerSlide(ITEMS_PER_SLIDE_MIN);
+      } else {
+        setItemsPerSlide(ITEMS_PER_SLIDE_MAX);
+      }
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   return (
     <div className="relative w-full">
@@ -45,14 +57,11 @@ const PromotionalProducts = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {mockProducts
-          .slice(
-            currentSlide * ITEMS_PER_SLIDE,
-            (currentSlide + 1) * ITEMS_PER_SLIDE
-          )
+          .slice(currentSlide * itemsPerSlide, (currentSlide + 1) * itemsPerSlide)
           .map((product) => (
-            <div key={product.id} className="h-72">
+            <div key={product.id} className="h-85 md:h-72">
               <ProductCard product={product} />
             </div>
           ))}
