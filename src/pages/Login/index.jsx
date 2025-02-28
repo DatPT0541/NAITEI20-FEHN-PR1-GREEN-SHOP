@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { mockUsers } from "../../mock/mockUsers";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,34 @@ const Login = () => {
       return;
     }
 
-    alert(`Đăng nhập thành công!\nEmail: ${email}\nMật khẩu: ${password}\nGhi nhớ tài khoản: ${remember ? "Có" : "Không"}`);
+    // Kiểm tra email và password
+    const user = mockUsers.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (user) {
+      // Đăng nhập thành công
+      // Lưu thông tin người dùng vào localStorage
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          key: user.key,
+          name: user.name,
+          email: user.email,
+          remember: remember,
+        })
+      );
+
+      if (user.role == "user") {
+        navigate("/");
+        window.location.reload();
+      } else {
+        navigate("/admin");
+      }
+    } else {
+      // Đăng nhập thất bại
+      alert("Email hoặc Mật khẩu không đúng!");
+    }
   };
 
   return (
@@ -25,13 +53,17 @@ const Login = () => {
           <div className="space-y-5">
             <div className="flex items-center justify-between mb-4 relative">
               <div className="relative">
-                <h1 className="text-green-600 font-semibold uppercase text-xl">Thông tin cá nhân</h1>
+                <h1 className="text-green-600 font-semibold uppercase text-xl">
+                  Thông tin cá nhân
+                </h1>
               </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-10 mt-10">
               <div>
-                <label className="text-left block text-gray-700">Email của bạn</label>
+                <label className="text-left block text-gray-700">
+                  Email của bạn
+                </label>
                 <input
                   type="email"
                   value={email}
@@ -40,7 +72,9 @@ const Login = () => {
                 />
               </div>
               <div>
-                <label className="text-left block text-gray-700">Mật khẩu</label>
+                <label className="text-left block text-gray-700">
+                  Mật khẩu
+                </label>
                 <input
                   type="password"
                   value={password}
@@ -60,7 +94,11 @@ const Login = () => {
                   Ghi nhớ tài khoản
                 </label>
 
-                <a href="#" className="text-gray-500 italic hover:underline" onClick={() => console.log("Forgot password")}>
+                <a
+                  href="#"
+                  className="text-gray-500 italic hover:underline"
+                  onClick={() => console.log("Forgot password")}
+                >
                   Bạn quên mật khẩu?
                 </a>
               </div>
@@ -79,11 +117,17 @@ const Login = () => {
           <div className="space-y-5">
             <div className="flex items-center justify-between mb-4 relative">
               <div className="relative">
-                <h1 className="text-green-600 font-semibold uppercase text-xl">Bạn chưa có tài khoản ?</h1>
+                <h1 className="text-green-600 font-semibold uppercase text-xl">
+                  Bạn chưa có tài khoản ?
+                </h1>
               </div>
             </div>
 
-            <p className="text-left text-sm text-gray-500">Đăng ký tài khoản ngay để có thể mua hàng nhanh chóng và dễ dàng hơn 1 Ngoài ra còn có rất nhiều chính sách và ưu đãi cho các thành viên citybike</p>
+            <p className="text-left text-sm text-gray-500">
+              Đăng ký tài khoản ngay để có thể mua hàng nhanh chóng và dễ dàng
+              hơn. Ngoài ra còn có rất nhiều chính sách và ưu đãi cho các thành
+              viên.
+            </p>
 
             <div className="flex justify-start">
               <button
@@ -99,6 +143,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

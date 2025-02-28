@@ -1,0 +1,47 @@
+export const mockUsers = [
+  {
+    key: "1",
+    name: "John Brown",
+    age: 32,
+    address: "New York No. 1 Lake Park",
+    email: "john.brown@example.com",
+    password: "password123",
+    role: "user",
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    age: 42,
+    address: "London No. 1 Lake Park",
+    email: "jim.green@example.com",
+    password: "jimgreen456",
+    role: "user",
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    age: 32,
+    address: "Sydney No. 1 Lake Park",
+    email: "joe.black@example.com",
+    password: "joeblack789",
+    role: "user",
+  },
+  {
+    key: "4",
+    name: "Jim Red",
+    age: 32,
+    address: "London No. 2 Lake Park",
+    email: "jim.red@example.com",
+    password: "jimred321",
+    role: "user",
+  },
+  {
+    key: "5",
+    name: "Admin User",
+    age: 35,
+    address: "Head Office",
+    email: "admin@example.com",
+    password: "admin123",
+    role: "admin", // Đánh dấu là Admin
+  },
+];
